@@ -222,7 +222,8 @@ get_default_menu_item(di_slist *list)
 	return NULL;
 }
 
-/* Return the text of the menu entry for PACKAGE.  */
+/* Fill buf with the text of the menu entry for PACKAGE, and return
+ * amount of buffer used. The size parameter is the allocated size of buf.  */
 static size_t menu_entry(struct debconfclient *debconf, di_system_package *package, char *buf, size_t size)
 {
 	char question[256];
