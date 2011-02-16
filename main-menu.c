@@ -295,9 +295,9 @@ di_system_package *show_main_menu(di_packages *packages, di_packages_allocator *
 	/*
 	 * Generate list of menu choices for debconf.
 	 */
-	menu = di_malloc(1024);
-	menu[0] = '\0';
 	menu_size = 1024;
+	menu = di_malloc(menu_size);
+	menu[0] = '\0';
 	menu_used = 1;
 	for (node = list->head; node != NULL; node = node->next) {
 		p = node->data;
