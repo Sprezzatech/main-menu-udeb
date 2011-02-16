@@ -222,17 +222,17 @@ get_default_menu_item(di_slist *list)
 	return NULL;
 }
 
-/* Fill buf with the text of the menu entry for PACKAGE, and return
- * amount of buffer used. */
-static size_t menu_entry(struct debconfclient *debconf, di_system_package *package, char *buf)
+/* Returns a the text of the menu entry for PACKAGE (in a static string) */
+static char *menu_entry(struct debconfclient *debconf, di_system_package *package)
 {
 	char question[256];
+	static char buf[256];
 	size_t size = sizeof(buf);
 
 	snprintf(question, sizeof(question), "debian-installer/%s/title", package->p.package);
 	if (!debconf_metaget(debconf, question, "Description")) {
 		strncpy(buf, debconf->value, size);
-		return strlen (buf);
+		return buf;
 	}
 
 	/* The following fallback case can go away once all packages
@@ -240,7 +240,9 @@ static size_t menu_entry(struct debconfclient *debconf, di_system_package *packa
 	di_log(DI_LOG_LEVEL_INFO, "Falling back to the package description for %s", package->p.package);
 	if (package->p.short_description)
 		strncpy(buf, package->p.short_description, size);
-	return strlen (buf);
+	else
+		buf[0]='\0';
+	return buf;
 }
 
 /* Priority at which the menu should be displayed */
@@ -271,7 +273,7 @@ di_system_package *show_main_menu(di_packages *packages, di_packages_allocator *
 	di_slist_node *node;
 	di_system_package *menudefault = NULL, *ret = NULL;
 	int i = 0, num = 0;
-	char buf[256], *menu, *s;
+	char *buf, *menu, *s;
 	int menu_prio, menu_size, menu_used, size;
 
 	for (node = packages->list.head; node; node = node->next) {
@@ -306,7 +308,8 @@ di_system_package *show_main_menu(di_packages *packages, di_packages_allocator *
 		if (!p->installer_menu_item ||
 		    !isinstallable(p))
 			continue;
-		size = menu_entry(debconf, p, buf);
+		buf = menu_entry(debconf, p);
+		size = strlen(buf);
 		if (menu_used + size + 2 > menu_size)
 		{
 			menu_size += 1024;
@@ -325,7 +328,7 @@ di_system_package *show_main_menu(di_packages *packages, di_packages_allocator *
 	debconf_capb(debconf);
 	debconf_subst(debconf, MAIN_MENU, "MENU", menu);
 	if (menudefault) {
-		menu_entry(debconf, menudefault, buf);
+		buf=menu_entry(debconf, menudefault);
 		debconf_set(debconf, MAIN_MENU, buf);
 	}
 	else {
@@ -341,7 +344,7 @@ di_system_package *show_main_menu(di_packages *packages, di_packages_allocator *
 	/* Figure out which menu item was selected. */
 	for (i = 0; i < num; i++) {
 		p = package_array[i];
-		menu_entry(debconf, p, buf);
+		buf = menu_entry(debconf, p);
 		if (strcmp(buf, s) == 0) {
 			ret = p;
 			break;
@@ -372,7 +375,7 @@ di_system_package *show_main_menu(di_packages *packages, di_packages_allocator *
 static int satisfy_virtual(di_system_package *p) {
 	di_slist_node *node;
 	di_system_package *dep, *defpkg = NULL;
-	char buf[256], *menu, *s = NULL;
+	char *buf, *menu, *s = NULL;
 	size_t menu_size, menu_used, size;
 	int is_menu_item = 0;
 
@@ -418,7 +421,8 @@ static int satisfy_virtual(di_system_package *p) {
 		if (dep->installer_menu_item)
 			is_menu_item = 1;
 
-		size = menu_entry(debconf, dep, buf);
+		buf = menu_entry(debconf, dep);
+		size = strlen(buf);
 		if (menu_used + size + 2 > menu_size)
 		{
 			menu_size += 1024;
@@ -451,7 +455,7 @@ static int satisfy_virtual(di_system_package *p) {
 			char *priority = "medium";
 			/* Only let the user choose if one of them is a menu item */
 			if (defpkg != NULL) {
-				menu_entry(debconf, defpkg, buf);
+				buf = menu_entry(debconf, defpkg);
 				debconf_set(debconf, MISSING_PROVIDE, buf);
 			} else {
 				/* TODO: How to figure out a default? */
@@ -472,7 +476,7 @@ static int satisfy_virtual(di_system_package *p) {
 		for (node = p->p.depends.head; node; node = node->next) {
 			di_package_dependency *d = node->data;
 			dep = (di_system_package *)d->ptr;
-			menu_entry(debconf, dep, buf);
+			buf = menu_entry(debconf, dep);
 			if (!is_menu_item || strcmp(s, buf) == 0) {
 				/* Ick. If we have a menu item it has to match the
 				 * debconf choice, otherwise we configure all of
@@ -576,11 +580,11 @@ static void restore_default_priority (void) {
 }
 
 void notify_user_of_failure (di_system_package *p) {
-	char buf[256];
+	char *buf;
 	
 	set_package_title(p);
 	debconf_capb(debconf);
-	menu_entry(debconf, p, buf);
+	buf = menu_entry(debconf, p);
 	debconf_subst(debconf, ITEM_FAILURE, "ITEM", buf);
 	debconf_input(debconf, "critical", ITEM_FAILURE);
 	debconf_go(debconf);
