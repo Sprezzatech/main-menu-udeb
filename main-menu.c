@@ -222,16 +222,18 @@ get_default_menu_item(di_slist *list)
 	return NULL;
 }
 
-/* Returns a the text of the menu entry for PACKAGE (in a static string) */
-static char *menu_entry(struct debconfclient *debconf, di_system_package *package)
+#define menu_entry_maxlen 256
+
+/* Returns a the text of the menu entry for PACKAGE (in a buffer
+ * that will persist until the next call of the function) */
+const char *menu_entry(struct debconfclient *debconf, di_system_package *package)
 {
-	char question[256];
-	static char buf[256];
-	size_t size = sizeof(buf);
+	char question[menu_entry_maxlen];
+	static char buf[menu_entry_maxlen];
 
 	snprintf(question, sizeof(question), "debian-installer/%s/title", package->p.package);
 	if (!debconf_metaget(debconf, question, "Description")) {
-		strncpy(buf, debconf->value, size);
+		strncpy(buf, debconf->value, menu_entry_maxlen);
 		return buf;
 	}
 
@@ -239,9 +241,38 @@ static char *menu_entry(struct debconfclient *debconf, di_system_package *packag
 	   have transitioned to the new form.  */
 	di_log(DI_LOG_LEVEL_INFO, "Falling back to the package description for %s", package->p.package);
 	if (package->p.short_description)
-		strncpy(buf, package->p.short_description, size);
+		strncpy(buf, package->p.short_description, menu_entry_maxlen);
 	else
 		buf[0]='\0';
+	return buf;
+}
+
+/* Escapes a string so it can be added to a Choices list. */
+const char *choices_escape(const char *string) {
+	static char buf[menu_entry_maxlen * 2];
+	const char *s;
+	char *p;
+
+	s = strchr(string, ',');
+	if (s == NULL)
+		return string;
+
+	/* This is not the cheapest way to do it, but a comma in a
+	 * choice is very rare. */
+	s=string;
+	p=buf;
+	while (s[0] != '\0') {
+		if (s[0] == ',') {
+			p[0] = '\\';
+			p++;
+		}
+
+		p[0]=s[0];
+
+		p++;
+		s++;
+	}
+	p[0] = '\0';
 	return buf;
 }
 
@@ -273,7 +304,8 @@ di_system_package *show_main_menu(di_packages *packages, di_packages_allocator *
 	di_slist_node *node;
 	di_system_package *menudefault = NULL, *ret = NULL;
 	int i = 0, num = 0;
-	char *buf, *menu, *s;
+	char *menu, *s;
+	const char *buf;
 	int menu_prio, menu_size, menu_used, size;
 
 	for (node = packages->list.head; node; node = node->next) {
@@ -308,7 +340,7 @@ di_system_package *show_main_menu(di_packages *packages, di_packages_allocator *
 		if (!p->installer_menu_item ||
 		    !isinstallable(p))
 			continue;
-		buf = menu_entry(debconf, p);
+		buf = choices_escape(menu_entry(debconf, p));
 		size = strlen(buf);
 		if (menu_used + size + 2 > menu_size)
 		{
@@ -375,7 +407,8 @@ di_system_package *show_main_menu(di_packages *packages, di_packages_allocator *
 static int satisfy_virtual(di_system_package *p) {
 	di_slist_node *node;
 	di_system_package *dep, *defpkg = NULL;
-	char *buf, *menu, *s = NULL;
+	char *menu, *s = NULL;
+	const char *buf;
 	size_t menu_size, menu_used, size;
 	int is_menu_item = 0;
 
@@ -421,7 +454,7 @@ static int satisfy_virtual(di_system_package *p) {
 		if (dep->installer_menu_item)
 			is_menu_item = 1;
 
-		buf = menu_entry(debconf, dep);
+		buf = choices_escape(menu_entry(debconf, dep));
 		size = strlen(buf);
 		if (menu_used + size + 2 > menu_size)
 		{
@@ -580,7 +613,7 @@ static void restore_default_priority (void) {
 }
 
 void notify_user_of_failure (di_system_package *p) {
-	char *buf;
+	const char *buf;
 	
 	set_package_title(p);
 	debconf_capb(debconf);
