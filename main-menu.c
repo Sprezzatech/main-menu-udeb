@@ -223,10 +223,11 @@ get_default_menu_item(di_slist *list)
 }
 
 /* Fill buf with the text of the menu entry for PACKAGE, and return
- * amount of buffer used. The size parameter is the allocated size of buf.  */
-static size_t menu_entry(struct debconfclient *debconf, di_system_package *package, char *buf, size_t size)
+ * amount of buffer used. */
+static size_t menu_entry(struct debconfclient *debconf, di_system_package *package, char *buf)
 {
 	char question[256];
+	size_t size = sizeof(buf);
 
 	snprintf(question, sizeof(question), "debian-installer/%s/title", package->p.package);
 	if (!debconf_metaget(debconf, question, "Description")) {
@@ -305,7 +306,7 @@ di_system_package *show_main_menu(di_packages *packages, di_packages_allocator *
 		if (!p->installer_menu_item ||
 		    !isinstallable(p))
 			continue;
-		size = menu_entry(debconf, p, buf, sizeof (buf));
+		size = menu_entry(debconf, p, buf);
 		if (menu_used + size + 2 > menu_size)
 		{
 			menu_size += 1024;
@@ -324,7 +325,7 @@ di_system_package *show_main_menu(di_packages *packages, di_packages_allocator *
 	debconf_capb(debconf);
 	debconf_subst(debconf, MAIN_MENU, "MENU", menu);
 	if (menudefault) {
-		menu_entry(debconf, menudefault, buf, sizeof (buf));
+		menu_entry(debconf, menudefault, buf);
 		debconf_set(debconf, MAIN_MENU, buf);
 	}
 	else {
@@ -340,7 +341,7 @@ di_system_package *show_main_menu(di_packages *packages, di_packages_allocator *
 	/* Figure out which menu item was selected. */
 	for (i = 0; i < num; i++) {
 		p = package_array[i];
-		menu_entry(debconf, p, buf, sizeof (buf));
+		menu_entry(debconf, p, buf);
 		if (strcmp(buf, s) == 0) {
 			ret = p;
 			break;
@@ -417,7 +418,7 @@ static int satisfy_virtual(di_system_package *p) {
 		if (dep->installer_menu_item)
 			is_menu_item = 1;
 
-		size = menu_entry(debconf, dep, buf, sizeof (buf));
+		size = menu_entry(debconf, dep, buf);
 		if (menu_used + size + 2 > menu_size)
 		{
 			menu_size += 1024;
@@ -450,7 +451,7 @@ static int satisfy_virtual(di_system_package *p) {
 			char *priority = "medium";
 			/* Only let the user choose if one of them is a menu item */
 			if (defpkg != NULL) {
-				menu_entry(debconf, defpkg, buf, sizeof(buf));
+				menu_entry(debconf, defpkg, buf);
 				debconf_set(debconf, MISSING_PROVIDE, buf);
 			} else {
 				/* TODO: How to figure out a default? */
@@ -471,7 +472,7 @@ static int satisfy_virtual(di_system_package *p) {
 		for (node = p->p.depends.head; node; node = node->next) {
 			di_package_dependency *d = node->data;
 			dep = (di_system_package *)d->ptr;
-			menu_entry(debconf, dep, buf, sizeof(buf));
+			menu_entry(debconf, dep, buf);
 			if (!is_menu_item || strcmp(s, buf) == 0) {
 				/* Ick. If we have a menu item it has to match the
 				 * debconf choice, otherwise we configure all of
@@ -579,7 +580,7 @@ void notify_user_of_failure (di_system_package *p) {
 	
 	set_package_title(p);
 	debconf_capb(debconf);
-	menu_entry(debconf, p, buf, sizeof (buf));
+	menu_entry(debconf, p, buf);
 	debconf_subst(debconf, ITEM_FAILURE, "ITEM", buf);
 	debconf_input(debconf, "critical", ITEM_FAILURE);
 	debconf_go(debconf);
