@@ -33,7 +33,7 @@ msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: debian-boot@lists.debian.org\n"
 "POT-Creation-Date: 2008-01-26 07:32+0000\n"
-"PO-Revision-Date: 2011-09-11 19:59+0200\n"
+"PO-Revision-Date: 2011-09-14 18:02+0200\n"
 "Last-Translator: Mert Dirik <mertdirik@gmail.com>\n"
 "Language-Team: Debian L10n Turkish <debian-l10n-turkish@lists.debian.org>\n"
 "Language: \n"
@@ -61,7 +61,7 @@ msgstr "Kurulumda bir sonraki adımı seçin:"
 #. :sl2:
 #: ../main-menu.templates:3001
 msgid "Installation step failed"
-msgstr "Kurulum adımı başarısız"
+msgstr "Kurulum adımı başarısız oldu"
 
 #. Type: error
 #. Description
@@ -71,7 +71,7 @@ msgid ""
 "An installation step failed. You can try to run the failing item again from "
 "the menu, or skip it and choose something else. The failing step is: ${ITEM}"
 msgstr ""
-"Bir kurulum adımı başarısızlıkla sonuçlandı. Bu adımı menüden seçerek tekrar "
+"Kurulum adımlarından biri başarısız oldu. Bu adımı menüden seçerek tekrar "
 "deneyebilir veya bu adımı atlayarak başka bir adım seçebilirsiniz. Başarısız "
 "adım: ${ITEM}"
 
