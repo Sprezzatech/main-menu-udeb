@@ -31,7 +31,7 @@ msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: debian-boot@lists.debian.org\n"
 "POT-Creation-Date: 2008-01-26 07:32+0000\n"
-"PO-Revision-Date: 2011-09-18 21:28+0100\n"
+"PO-Revision-Date: 2011-09-26 10:46+0100\n"
 "Last-Translator: Marcin Owsiany <porridge@debian.org>\n"
 "Language-Team: Polish <debian-l10n-polish@lists.debian.org>\n"
 "Language: pl\n"
@@ -44,21 +44,21 @@ msgstr ""
 #. :sl1:
 #: ../main-menu.templates:1001
 msgid "Debian installer main menu"
-msgstr ""
+msgstr "Menu główne instalatora Debiana"
 
 #. Type: select
 #. Description
 #. :sl1:
 #: ../main-menu.templates:2001
 msgid "Choose the next step in the install process:"
-msgstr ""
+msgstr "Wybierz następny etap instalacji:"
 
 #. Type: error
 #. Description
 #. :sl2:
 #: ../main-menu.templates:3001
 msgid "Installation step failed"
-msgstr ""
+msgstr "Jeden z etapów instalacji nie powiódł się"
 
 #. Type: error
 #. Description
@@ -68,13 +68,16 @@ msgid ""
 "An installation step failed. You can try to run the failing item again from "
 "the menu, or skip it and choose something else. The failing step is: ${ITEM}"
 msgstr ""
+"Ten etap instalacji nie powiódł się. Możesz spróbować uruchomić go ponownie "
+"lub pominąć go i wybrać coś innego z menu. Etap, który się nie powiódł to: "
+"${ITEM}"
 
 #. Type: select
 #. Description
 #. :sl2:
 #: ../main-menu.templates:4001
 msgid "Choose an installation step:"
-msgstr ""
+msgstr "Wybierz etap instalacji:"
 
 #. Type: select
 #. Description
@@ -84,3 +87,5 @@ msgid ""
 "This installation step depends on one or more other steps that have not yet "
 "been performed."
 msgstr ""
+"Ten etap instalacji zależy od jednego lub większej ilości innych etapów, "
+"które nie zostały jeszcze wykonane."
