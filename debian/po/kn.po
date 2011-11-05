@@ -1,0 +1,79 @@
+# THIS FILE IS GENERATED AUTOMATICALLY FROM THE D-I PO MASTER FILES
+# The master files can be found under packages/po/
+#
+# DO NOT MODIFY THIS FILE DIRECTLY: SUCH CHANGES WILL BE LOST
+#
+# Kannada Translations
+# Vikram Vincent <vincentvikram@gmail.com>, 2007, 2010, 2011.
+# Raghavendra S <raghuarr@gmail.com>, 2010.
+#
+# Translators:
+# shashi kiran <shashi859@gmail.com>, 2010, 2011.
+# Prabodh CP <prabodhcp@gmail.com>, 2011.
+#
+#
+# Translations from iso-codes:
+#   Shankar Prasad <svenkate@redhat.com>, 2009.
+#   Vikram Vincent <vincentvikram@gmail.com>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: kn\n"
+"Report-Msgid-Bugs-To: debian-boot@lists.debian.org\n"
+"POT-Creation-Date: 2008-01-26 07:32+0000\n"
+"PO-Revision-Date: 2011-11-01 23:07+0530\n"
+"Last-Translator: vignesh prabhu <stove311987@gmail.com>\n"
+"Language-Team: Kannada <debian-l10n-kannada@lists.debian.org>\n"
+"Language: kn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: text
+#. Description
+#. :sl1:
+#: ../main-menu.templates:1001
+msgid "Debian installer main menu"
+msgstr "ದೇಬಿಅನ ಅನುಸ್ತಾಪನೇ ತಂತ್ರಾಂಶ ದ ಮುಖ್ಯ ಪರಿವಿಡಿ"
+
+#. Type: select
+#. Description
+#. :sl1:
+#: ../main-menu.templates:2001
+msgid "Choose the next step in the install process:"
+msgstr "ಅನುಸ್ತಾಪನಾ ಪ್ರಕ್ರಿಯಯಲ್ಲಿ ಮುಂದಿನ ಹಂತವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ"
+
+#. Type: error
+#. Description
+#. :sl2:
+#: ../main-menu.templates:3001
+msgid "Installation step failed"
+msgstr "ಅನುಸ್ಥಾಪನ ಪ್ರಕ್ರಿಯೆ ವಿಫಲವಾಯಿತು"
+
+#. Type: error
+#. Description
+#. :sl2:
+#: ../main-menu.templates:3001
+msgid ""
+"An installation step failed. You can try to run the failing item again from "
+"the menu, or skip it and choose something else. The failing step is: ${ITEM}"
+msgstr ""
+"ಒಂದು ಅನುಸ್ಥಾಪನ ಪ್ರಕ್ರಿಯೆ ವಿಫಲವಾಗಿದೆ. ನೀವು ವಿಫಲಗೊಂಡದ್ದನ್ನು ಪರಿವಿಡಿಯಿಂದ‌ ಅನುಸ್ತಾಪಿಸಲು "
+"ಪ್ರಯತ್ನಿಸಬಹುದು ಅಥವಾ ಬೇರಾವುದನ್ನಾದರು ಆರಿಸಬಹುದು. ವಿಫಲವಾದ ಪ್ರಕ್ರಿಯೆಯು ${ITEM}"
+
+#. Type: select
+#. Description
+#. :sl2:
+#: ../main-menu.templates:4001
+msgid "Choose an installation step:"
+msgstr "ಅನುಸ್ಥಾಪನ ಪ್ರಕ್ರಿಯೆಯನ್ನು ಆಯ್ಕೆಮಾಡು."
+
+#. Type: select
+#. Description
+#. :sl2:
+#: ../main-menu.templates:4001
+msgid ""
+"This installation step depends on one or more other steps that have not yet "
+"been performed."
+msgstr ""
+"ಈ ಅನುಸ್ಥಾಪನ ಪ್ರಕ್ರಿಯೆಯು ಒಂದು ಅಥವಾ ಒಂದಕ್ಕಿಂತ ಹೆಚ್ಛು  ಮಾಡಲ್ಪಡದ‌ ಪ್ರಕ್ರಿಯೆಗಳ ಮೇಲೆ "
+"ಅವಲಂಬಿಸಿದೆ."
