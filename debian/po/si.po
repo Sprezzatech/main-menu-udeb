@@ -18,8 +18,8 @@ msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: debian-boot@lists.debian.org\n"
 "POT-Creation-Date: 2008-01-26 07:32+0000\n"
-"PO-Revision-Date: 2011-11-01 00:30+0530\n"
-"Last-Translator: Danishka Navin <danishka@gmail.com>\n"
+"PO-Revision-Date: 2011-09-15 07:01+0530\n"
+"Last-Translator: \n"
 "Language-Team: Sinhala <info@hanthana.org>\n"
 "Language: si\n"
 "MIME-Version: 1.0\n"
@@ -32,21 +32,21 @@ msgstr ""
 #. :sl1:
 #: ../main-menu.templates:1001
 msgid "Debian installer main menu"
-msgstr ""
+msgstr "Debian ස්ථාපකයෙ ප්‍රධාන මෙනුව"
 
 #. Type: select
 #. Description
 #. :sl1:
 #: ../main-menu.templates:2001
 msgid "Choose the next step in the install process:"
-msgstr ""
+msgstr "ස්ථාපන ක්‍රියාවලියේ ඊළඟ පියවර තෝරන්න:"
 
 #. Type: error
 #. Description
 #. :sl2:
 #: ../main-menu.templates:3001
 msgid "Installation step failed"
-msgstr ""
+msgstr "ස්ථාපන අදියර අසාර්ථකයි"
 
 #. Type: error
 #. Description
@@ -56,13 +56,15 @@ msgid ""
 "An installation step failed. You can try to run the failing item again from "
 "the menu, or skip it and choose something else. The failing step is: ${ITEM}"
 msgstr ""
+"ස්ථාපන අදියර අසාර්ථකයි, ඔබට එම අසාර්ථක වූ අයිතමය මෙනුව භාවිතයෙන් නැවත ක්‍රියා කරවිය හැක, "
+"නැතහොත් එය මඟහැර අනෙකක් තෝරාගත හැක, අසාර්ථක පියවර වූයේ: ${ITEM}"
 
 #. Type: select
 #. Description
 #. :sl2:
 #: ../main-menu.templates:4001
 msgid "Choose an installation step:"
-msgstr ""
+msgstr "ස්ථාපන අදියරක් තෝරන්න:"
 
 #. Type: select
 #. Description
@@ -71,4 +73,4 @@ msgstr ""
 msgid ""
 "This installation step depends on one or more other steps that have not yet "
 "been performed."
-msgstr ""
+msgstr "මෙම ස්ථාපන අදියර ඔබ විසින් ඉටු නොකල වෙනත් අදියරක් හෝ අදියර කිහිපයක් මත රඳා පවතී."
