@@ -1,0 +1,67 @@
+# THIS FILE IS GENERATED AUTOMATICALLY FROM THE D-I PO MASTER FILES
+# The master files can be found under packages/po/
+#
+# DO NOT MODIFY THIS FILE DIRECTLY: SUCH CHANGES WILL BE LOST
+#
+# Tibetan translation for Debian Installer.
+msgid ""
+msgstr ""
+"Project-Id-Version: debian-installer\n"
+"Report-Msgid-Bugs-To: debian-boot@lists.debian.org\n"
+"POT-Creation-Date: 2008-01-26 07:32+0000\n"
+"PO-Revision-Date: 2012-04-14 22:12+0600\n"
+"Last-Translator: Tennom <tankola@ymail.com, tennomyathog@gmail.com>\n"
+"Language-Team: bo <translation-team-bo@lists.sourceforge.net>\n"
+"Language: bo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. Type: text
+#. Description
+#. :sl1:
+#: ../main-menu.templates:1001
+msgid "Debian installer main menu"
+msgstr "Debian སྒྲིག་འཇུག་ཆས་སྤྱིའི་འདེམས་ཐོ"
+
+#. Type: select
+#. Description
+#. :sl1:
+#: ../main-menu.templates:2001
+msgid "Choose the next step in the install process:"
+msgstr "སྒྲིག་འཇུག་གོ་རིམ་ནང་གི་འོག་རིམ་དེ་གདམ་པ："
+
+#. Type: error
+#. Description
+#. :sl2:
+#: ../main-menu.templates:3001
+msgid "Installation step failed"
+msgstr "སྒྲིག་འཇུག་གི་བརྒྱུད་རིམ་ལེགས་འགྲུབ་མ་ཐུབ"
+
+#. Type: error
+#. Description
+#. :sl2:
+#: ../main-menu.templates:3001
+msgid ""
+"An installation step failed. You can try to run the failing item again from "
+"the menu, or skip it and choose something else. The failing step is: ${ITEM}"
+msgstr ""
+"སྒྲིག་འཇུག་གི་རྒྱུད་རིམ་ཞིག་བྱེད་མ་ཐུབ། ཁྱོད་ཀྱིས་འདེམས་ཐོའི་ནང་ནས་བྱེད་མ་ཐུབ་པའི་སྒྲིག་འཇུག་བརྒྱུད་རིམ་དེ་སླར་"
+"འཁོར་སྐྱོད་བྱེད་པའམ་དེ་སྐྱུར་ནས་འདེམས་སྟངས་གཞན་ཞིག་བཟོ་ཆོག ལེགས་འགྲུབ་མ་ཐུབ་པའི་རྒྱུད་རིམ་ནི：${ITEM}"
+
+#. Type: select
+#. Description
+#. :sl2:
+#: ../main-menu.templates:4001
+msgid "Choose an installation step:"
+msgstr "སྒྲིག་འཇུག་གི་བརྒྱུད་རིམ་ཞིག་འདེམས་པ："
+
+#. Type: select
+#. Description
+#. :sl2:
+#: ../main-menu.templates:4001
+msgid ""
+"This installation step depends on one or more other steps that have not yet "
+"been performed."
+msgstr "སྒྲིག་འཇུག་གི་བརྒྱུད་རིམ་འདི་སྤྱོད་མེད་པའི་བརྒྱུད་རིམ་གཞན་ཞིག་གམ་འགའ་ཞིག་བརྟེན་དགོས"
