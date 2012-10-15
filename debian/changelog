@@ -1,3 +1,9 @@
+main-menu (1.39+SprezzOS) unstable; urgency=low
+
+  * SprezzOS theming.
+
+ -- Nick Black <nick.black@sprezzatech.com>  Sun, 17 Jun 2012 01:11:24 +0000
+
 main-menu (1.38) unstable; urgency=low
 
   * Team upload

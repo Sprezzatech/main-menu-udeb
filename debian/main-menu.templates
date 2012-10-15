@@ -1,7 +1,7 @@
 Template: debian-installer/main-menu-title
 Type: text
 # :sl1:
-_Description: Debian installer main menu
+_Description: SprezzOS installer
 
 Template: debian-installer/main-menu
 Type: select
