@@ -137,7 +137,7 @@ checkout = git clone http://github.com/dankamongmen/sprezzos-installer.git insta
 #checkout = git clone git+ssh://git.debian.org/git/d-i/lowmem
 
 [packages/main-menu]
-checkout = git clone git+ssh://git.debian.org/git/d-i/main-menu
+checkout = git clone http://github.com/Sprezzatech/main-menu-udeb.git main-menu
 
 #[packages/media-retriever]
 #checkout = git clone git+ssh://git.debian.org/git/d-i/media-retriever
