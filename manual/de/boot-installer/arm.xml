@@ -1,0 +1,153 @@
+<!-- retain these comments for translator revision tracking -->
+<!-- original version: 67373 -->
+
+  <sect2 arch="arm" id="boot-tftp"><title>Booten per TFTP</title>
+
+&boot-installer-intro-net.xml;
+
+  </sect2>
+
+
+  <sect2 arch="arm"><title>Booten von CD-ROM</title>
+
+&boot-installer-intro-cd.xml;
+
+  </sect2>
+
+
+  <sect2 arch="arm" id="boot-firmware"><title>Booten von Firmware</title>
+
+&boot-installer-intro-firmware.xml;
+
+   <sect3 arch="arm" id="boot-firmware-ss4000e">
+   <title>Booten des SS4000-E</title>
+<para>
+
+Aufgrund von Einschränkungen in der SS4000-E-Firmware ist es derzeit
+unglücklicherweise nicht möglich, den Installer ohne Verwendung eines
+seriellen Ports zu booten. Um den Installer zu booten, benötigen Sie
+ein serielles Nullmodem-Kabel, einen Rechner mit einem seriellen
+Port<footnote id="arm-s4ke-port">
+
+<para>
+Ein USB-Seriell-Converter funktioniert auch.
+</para>
+
+</footnote> und ein Flachbandkabel mit einem männlichen DB9-Anschluß
+auf der einen und einem 10-poligen .1" IDC-Stecker auf der anderen
+Seite<footnote id="arm-s4k-rib">
+
+<para>
+Solch ein Kabel findet sich oft in älteren Desktop-Rechnern mit
+eingebauten 9-poligen Anschlüssen für die seriellen Ports.
+</para>
+
+</footnote>.
+
+</para><para>
+
+Um den SS4000-E zu booten, verwenden Sie Ihr
+Nullmodem-Kabel und das Flachbandkabel, um sich mit dem seriellen Anschluß
+des SS4000-E zu verbinden und starten Sie die Maschine neu. Sie müssen
+ein serielles Terminal-Programm benutzen, um mit dem Rechner zu kommunizieren;
+auf &debian; GNU/Linux-Systemen ist es eine gute Wahl, das Programm
+<command>cu</command> aus dem gleichnamigen Paket zu verwenden.
+Angenommen, der serielle Port auf Ihrem Rechner ist
+<filename>/dev/ttyS0</filename>, benutzen Sie folgende Befehlszeile:
+
+</para>
+
+<informalexample><screen>
+cu -lttyS0 -s115200
+</screen></informalexample>
+
+<para>
+
+Wenn Sie Windows verwenden, sollten Sie vielleicht das Programm
+<classname>hyperterminal</classname> nutzen. Wählen Sie eine
+Baudrate von 115200, 8 Bit Wortlänge, kein Stopbit und ein Parity-Bit.
+
+</para><para>
+
+Beim Starten der Maschine werden Sie folgende Ausgabe sehen:
+
+</para>
+
+<informalexample><screen>
+No network interfaces found
+
+EM-7210 ver.T04 2005-12-12 (For ver.AA)
+== Executing boot script in 1.000 seconds - enter ^C to abort
+</screen></informalexample>
+
+<para>
+
+Drücken Sie an diesem Punkt Strg-C, um den Bootloader zu 
+unterbrechen<footnote id="arm-s4ke-sec">
+
+<para>
+Beachten Sie, dass Sie dazu nur eine Sekunde Zeit haben; falls Sie dies
+Zeitfenster verpasst haben, trennen Sie kurz die Stromzufuhr des Rechners und
+versuchen Sie es nach dem Start erneut.
+</para>
+
+</footnote>. Sie kommen jetzt zum RedBoot-Prompt. Geben Sie folgende Befehle
+ein:
+
+<informalexample><screen>
++load -v -r -b 0x01800000 -m ymodem ramdisk.gz
++load -v -r -b 0x01008000 -m ymodem zImage
++exec -c "console=ttyS0,115200 rw root=/dev/ram mem=256M@0xa0000000" -r 0x01800000
+</screen></informalexample>
+
+</para><para>
+ 
+Nach jedem <command>load</command>-Befehl erwartet das System die Übermittlung
+einer Datei mittels des YMODEM-Protokolls. Wenn Sie cu verwenden, stellen
+Sie sicher, dass Sie das Paket <classname>lrzsz</classname> installiert haben,
+drücken Sie dann Enter, gefolgt von der <quote>~&lt;</quote>-Escape-Sequenz,
+um ein externes Programm zu starten, und führen Sie dann
+<command>sb initrd.gz</command> bzw. <command>sb vmlinuz</command> aus.
+
+</para><para>
+
+Alternativ dazu ist es möglich, den Kernel und die Ramdisk mittels HTTP
+statt YMODEM zu laden. Dies ist schneller, erfordert jedoch einen funktionierenden
+HTTP-Server im Netzwerk. Um diesen Weg zu gehen, schalten Sie zunächst den
+Bootloader in den RAM-Modus:
+
+<informalexample><screen>
+fis load rammode
+g
+</screen></informalexample>
+
+</para><para>
+
+Dies führt scheinbar dazu, dass die Maschine neu startet; tatsächlich wird
+jedoch reboot in den RAM geladen und die Maschine von dort neu gestartet.
+Ohne diesen Schritt würde das System sich im nächsten, zwingend notwendigen
+IP-Adressen-Schritt aufhängen.
+
+</para><para>
+
+Sie müssen nochmals Strg-C drücken, um den Bootvorgang zu unterbrechen.
+Führen Sie dann folgendes aus:
+ 
+<informalexample><screen>
+ip_address -l <replaceable>192.168.2.249</replaceable> -h <replaceable>192.168.2.4</replaceable>
+load -v -r -b 0x01800000 -m http /initrd.gz
+load -v -r -b 0x01008000 -m http /zImage
+exec -c "console=ttyS0,115200 rw root=/dev/ram mem=256M@0xa0000000" -r 0x01800000
+</screen></informalexample>
+
+Dabei entspricht <replaceable>192.168.2.249</replaceable> der IP-Adresse
+des installierten Systems und <replaceable>192.168.2.4</replaceable> der
+IP-Adresse des HTTP-Servers, der die Kernel- und Ramdisk-Dateien enthält.
+
+</para><para>
+
+Der Installer wird nun wie gewöhnlich starten.
+
+</para>
+   </sect3>
+  </sect2>

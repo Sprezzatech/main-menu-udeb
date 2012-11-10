@@ -1,0 +1,92 @@
+<!-- retain these comments for translator revision tracking -->
+<!-- original version: 67993 -->
+
+ <sect1 id="pre-install-bios-setup">
+ <!-- <title>Pre-Installation Hardware and Operating System Setup</title> -->
+ <title>Configurazione di hardware e sistema operativo prima dell'installazione</title>
+<para>
+
+<!--
+This section will walk you through pre-installation hardware setup, if
+any, that you will need to do prior to installing &debian;.  Generally,
+this involves checking and possibly changing BIOS/system firmware settings for
+your system.  The <quote>BIOS</quote> or <quote>system firmware</quote> is the core software used by the
+hardware; it is most critically invoked during the bootstrap process
+(after power-up).
+-->
+
+Questa sezione guida il lettore attraverso la riconfigurazione dell'hardware
+che in alcuni casi potrebbe essere necessaria prima di installare &debian;.
+Generalmente si tratta di controllare e, nel caso, di modificare le
+impostazioni del BIOS/firmware di sistema. Il <quote>BIOS</quote> o
+<quote>firmware di sistema</quote>
+è il software essenziale usato dall'hardware. Ne viene fatto un utilizzo
+critico durante il processo di bootstrap (che segue l'accensione).
+
+</para>
+
+&bios-setup-i386.xml;
+&bios-setup-powerpc.xml;
+&bios-setup-sparc.xml;
+&bios-setup-s390.xml;
+
+  <sect2 arch="x86;powerpc" id="hardware-issues">
+  <!-- <title>Hardware Issues to Watch Out For</title> -->
+  <title>Problemi hardware a cui prestare attenzione</title>
+   <formalpara arch="x86">
+   <!-- <title>USB BIOS support and keyboards</title> -->
+   <title>Tastiere USB e BIOS</title>
+<para>
+
+<!--
+If you have no PS/2-style keyboard, but only a USB model, on some
+very old PCs you may need to enable legacy keyboard emulation in your BIOS setup
+to be able to use your keyboard in the bootloader menu, but this is not an issue
+for modern systems. If your keyboard does not work in the bootloader
+menu, consult your mainboard manual and look in the BIOS for <quote>Legacy
+keyboard emulation</quote> or <quote>USB keyboard support</quote> options.
+-->
+
+Se non si dispone di una tastiera PS/2 e si ha solo una tastiera USB,
+su alcuni PC molto vecchi potrebbe essere necessario attivare nella
+configurazione del BIOS l'emulazione di tastiera per poter usare la
+tastiera nel menu del bootloader; questo non è un problema sui sistemi
+più recenti. Se non è possibile usare la tastiera nel menu del
+bootloader, consultare il manuale della scheda madre cercando
+informazioni sulle opzioni <quote>Legacy keyboard emulation</quote> o
+<quote>USB keyboard support</quote>.
+
+</para>
+   </formalpara>
+
+   <formalpara arch="powerpc">
+   <!-- <title>Display-visibility on OldWorld Powermacs</title> -->
+   <title>Qualità della visualizzazione su Powermac OldWorld</title>
+<para>
+
+<!--
+Some OldWorld Powermacs, most notably those with the <quote>control</quote>
+display driver, may not reliably produce a colormap under Linux when the
+display is configured for more than 256 colors. If you are experiencing such
+issues with your display after rebooting (you can sometimes see data on
+the monitor, but on other occasions cannot see anything) or, if the screen
+turns black after booting the installer instead of showing you the user
+interface, try changing your display settings under MacOS to use 256
+colors instead of <quote>thousands</quote> or <quote>millions</quote>.
+-->
+
+Alcuni Powermac OldWorld, principalmente quelli con il <quote>control
+display driver</quote>, potrebbero non essere in grado di riprodurre
+correttamente la mappa dei colori sotto Linux quando si richiede una
+visualizzazione con più di 256 colori. Se si verificano problemi di
+visualizzazione dopo il riavvio (si vedono degli strani caratteri o
+non si vede nulla) oppure se dopo l'avvio lo schermo diventa nero anziché
+mostrare l'interfaccia utente del sistema d'installazione, si può provare
+a modificare le impostazioni di visualizzazione sotto MacOS in modo da
+usare 256 colori al posto di <quote>migliaia</quote> o addirittura
+<quote>milioni</quote> di colori.
+
+</para>
+   </formalpara>
+  </sect2>
+ </sect1>

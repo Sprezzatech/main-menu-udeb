@@ -1,0 +1,234 @@
+<!-- retain these comments for translator revision tracking -->
+<!-- $Id$ -->
+
+ <sect1 id="installation-media">
+ <title>Installation Media</title>
+
+<para>
+
+This section will help you determine which different media types you can use to
+install &debian;. There is a whole chapter devoted to media,
+<xref linkend="install-methods"/>, which lists the advantages and
+disadvantages of each media type. You may want to refer back to this page once
+you reach that section.
+
+</para>
+
+  <sect2 condition="supports-floppy-boot"><title>Floppies</title>
+<para>
+
+In some cases, you'll have to do your first boot from floppy disks.
+Generally, all you will need is a
+high-density (1440 kilobytes) 3.5 inch floppy drive.
+
+</para><para arch="powerpc">
+
+For CHRP, floppy support is currently broken.
+
+</para>
+  </sect2>
+
+  <sect2 arch="not-s390"><title>CD-ROM/DVD-ROM</title>
+
+<note><para>
+
+Whenever you see <quote>CD-ROM</quote> in this manual, it applies to both
+CD-ROMs and DVD-ROMs, because both technologies are really
+the same from the operating system's point of view.
+
+</para></note><para>
+
+CD-ROM based installation is supported for most architectures.
+
+</para><para arch="x86">
+
+On PCs SATA, IDE/ATAPI and SCSI CD-ROMs are supported.
+
+</para><para arch="x86">
+
+USB CD-ROM drives are also supported, as are FireWire devices that
+are supported by the ohci1394 and sbp2 drivers.
+
+</para><para arch="arm">
+
+IDE/ATAPI CD-ROMs are supported on all ARM machines.
+
+</para><para arch="mips">
+
+On SGI machines, booting from CD-ROM requires a SCSI CD-ROM drive
+capable of working with a logical blocksize of 512 bytes. Many of the
+SCSI CD-ROM drives sold on the PC market do not have this
+capability. If your CD-ROM drive has a jumper labeled
+<quote>Unix/PC</quote> or <quote>512/2048</quote>, place it in the
+<quote>Unix</quote> or <quote>512</quote> position.
+To start the install, simply choose the <quote>System installation</quote>
+entry in the firmware.
+
+</para>
+  </sect2>
+
+  <sect2 condition="bootable-usb"><title>USB Memory Stick</title>
+
+<para>
+
+USB flash disks a.k.a. USB memory sticks have become a commonly
+used and cheap storage device. Most modern computer systems
+also allow booting the &d-i; from such a stick.
+Many modern computer systems, in particular netbooks and thin laptops, do not have
+a CD/DVD-ROM drive anymore at all and booting from USB media ist
+the standard way of installing a new operating system on them.
+
+</para>
+  </sect2>
+
+  <sect2><title>Network</title>
+
+<para>
+
+The network can be used during the installation to retrieve files needed
+for the installation. Whether the network is used or not depends on the
+installation method you choose and your answers to certain questions that
+will be asked during the installation. The installation system supports
+most types of network connections (including PPPoE, but not ISDN or PPP),
+via either HTTP or FTP. After the installation is completed, you can also
+configure your system to use ISDN and PPP.
+
+</para><para condition="supports-tftp">
+
+You can also <emphasis>boot</emphasis> the installation system over the
+network without needing any local media like CDs/DVDs or USB sticks.  If
+you already have a netboot-infrastructure available (i.e.  you are already
+running DHCP and TFTP services in your network), this allows an easy and fast
+deployment of a large number of machines.  Setting up the necessary
+infrastructure requires a certain level of technical experience, so this is
+not recommended for novice users.
+
+<phrase arch="mips;mipsel">This is the preferred installation technique
+for &arch-title;.</phrase>
+
+</para><para condition="supports-nfsroot">
+
+Diskless installation, using network booting from a local area network
+and NFS-mounting of all local filesystems, is another option.
+
+</para>
+  </sect2>
+
+
+  <sect2><title>Hard Disk</title>
+
+<para>
+
+Booting the installation system directly from a hard disk is another option
+for many architectures. This will require some other operating system
+to load the installer onto the hard disk. This method is only recommended
+for special cases when no other installation method is available.
+
+</para><para arch="sparc">
+
+Although the &arch-title; does not allow booting from SunOS
+(Solaris), you can install from a SunOS partition (UFS slices).
+
+</para>
+  </sect2>
+
+
+  <sect2><title>Un*x or GNU system</title>
+
+<para>
+
+If you are running another Unix-like system, you could use it to install
+&debian-gnu; without using the &d-i; described in the rest of this
+manual. This kind of install may be useful for users with otherwise
+unsupported hardware or on hosts which can't afford downtime.  If you
+are interested in this technique, skip to the <xref
+linkend="linux-upgrade"/>. This installation method is only recommended
+for advanced users when no other installation method is available.
+
+</para>
+  </sect2>
+
+  <sect2><title>Supported Storage Systems</title>
+
+<para>
+
+The &debian; installer contains a kernel which is built to maximize the
+number of systems it runs on.
+</para><para arch="x86">
+Generally, the &debian; installation system includes support for IDE (also
+known as PATA) drives, SATA and SCSI controllers and drives, USB, and
+FireWire.  The supported file systems include FAT, Win-32 FAT extensions
+(VFAT) and NTFS.
+
+
+<!--
+</para><para arch="i386">
+
+Disk interfaces that emulate the <quote>AT</quote> hard disk interface
+&mdash; often called MFM, RLL, IDE, or PATA &mdash; are supported.  SATA and
+SCSI disk controllers from many different manufacturers are supported. See the
+<ulink url="&url-hardware-howto;">Linux Hardware Compatibility HOWTO</ulink>
+for more details.
+-->
+
+</para><para arch="sparc">
+
+Any storage system supported by the Linux kernel is also supported by
+the boot system. The following SCSI drivers are supported in the default
+kernel:
+
+<itemizedlist>
+<listitem><para>
+
+Sparc ESP
+
+</para></listitem>
+<listitem><para>
+
+PTI Qlogic,ISP
+
+</para></listitem>
+<listitem><para>
+
+Adaptec AIC7xxx
+
+</para></listitem>
+<listitem><para>
+
+NCR and Symbios 53C8XX
+
+</para></listitem>
+</itemizedlist>
+
+IDE systems (such as the UltraSPARC 5) are also supported. See
+<ulink url="&url-sparc-linux-faq;">Linux for SPARC Processors FAQ</ulink>
+for more information on SPARC hardware supported by the Linux kernel.
+
+</para><para arch="powerpc">
+
+Any storage system supported by the Linux kernel is also supported by
+the boot system.  Note that the current Linux kernel does not support
+floppies on CHRP systems at all.
+
+</para><para arch="hppa">
+
+Any storage system supported by the Linux kernel is also supported by
+the boot system.  Note that the current Linux kernel does not support
+the floppy drive.
+
+</para><para arch="mips;mipsel">
+
+Any storage system supported by the Linux kernel is also supported by
+the boot system.
+
+</para><para arch="s390">
+
+Any storage system supported by the Linux kernel is also supported by
+the boot system.  This means that FBA and ECKD DASDs are supported with
+the old Linux disk layout (ldl) and the new common S/390 disk layout (cdl).
+
+</para>
+
+  </sect2>
+
+ </sect1>

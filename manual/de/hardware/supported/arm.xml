@@ -1,0 +1,95 @@
+<!-- retain these comments for translator revision tracking -->
+<!-- original version: 67982 -->
+
+  <sect2 arch="arm"><title>CPUs, Mainboards und Grafikunterstützung</title>
+
+<para>
+
+Jede unterschiedliche ARM-Architektur benötigt einen eigenen Kernel.
+Daher unterstützt die Standard-&debian;-Distribution die Installation nur
+auf einigen der weit verbreiteten Plattformen. Die &debian;-Arbeitsumgebung
+sollte jedoch auf <emphasis>jeder</emphasis> ARM-CPU verwendet werden können.
+
+</para>
+
+<para>
+
+Die meisten ARM-CPUs müssen in einem der beiden Endian-Modi laufen
+(Little-Endian oder Big-Endian), wobei die Mehrzahl der aktuellen
+System-Implementationen den Little-Endian-Modus verwenden.
+&debian; unterstützt momentan nur Little-Endian-ARM-Systeme.
+
+</para>
+
+<para>
+
+Die unterstützten Plattformen sind:
+
+<variablelist>
+
+<varlistentry>
+<term>IOP32x</term>
+<listitem><para>
+
+Intels I/O-Prozessor-Serie (IOP) findet sich in einer Reihe von Produkten
+für Datenspeicherung und -verarbeitung. &debian; unterstützt derzeit
+die IOP32x-Plattform, von der die IOP 80219- und 32x-Chips derzeit in
+netzwerk-gebundenen Speichergeräten (Network Attached Storage/NAS-Devices)
+zu finden sind. &debian; unterstützt explizit zwei solche Geräte:
+den <ulink url="&url-arm-cyrius-glantank;">GLAN Tank</ulink> von IO-Data
+und den <ulink url="&url-arm-cyrius-n2100;">Thecus N2100</ulink>.
+
+</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>Kirkwood</term>
+<listitem><para>
+
+Kirkwood ist ein <quote>System on a Chip</quote> (SoC - ein komplettes System
+auf einem einzigen Chip) von Marvell, das eine ARM-CPU, Ethernet,
+SATA, USB sowie weitere Funktionalitäten in einem Chip vereint. Wir
+unterstützen derzeit folgende Kirkwood-basierte Geräte: OpenRD
+(OpenRD-Base, OpenRD-Client und OpenRD-Ultimate), <ulink
+url="&url-arm-cyrius-sheevaplug;">Plug-Computer (SheevaPlug, GuruPlug und
+DreamPlug)</ulink>, <ulink url="&url-arm-cyrius-qnap-kirkwood;">QNAP
+Turbo Station</ulink> (alle TS-11x-, TS-21x- und TS-41x-Modelle) sowie
+LaCie NAS-Geräte (Network Space v2, Network Space Max v2, Internet Space v2, d2
+Network v2, 2Big Network v2 und 5Big Network v2).
+
+</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>Orion5x</term>
+<listitem><para>
+
+Orion ist ein <quote>System on a Chip</quote> (SoC - ein komplettes System
+auf einem einzigen Chip) von
+Marvell, das eine ARM-CPU, Ethernet, SATA, USB sowie weitere Funktionalität
+in einem Chip vereint. Es gibt viele Network-Attached-Storage-Geräte (NAS -
+Geräte, die Speicherplatz im Netzwerk zur Verfügung stellen) auf dem Markt,
+die auf dem Orion-Chip basieren. Wir unterstützen derzeit die folgenden
+Orion-basierten Geräte: <ulink
+url="&url-arm-cyrius-kuroboxpro;">Buffalo Kurobox</ulink>, <ulink
+url="&url-arm-cyrius-dns323;">D-Link DNS-323</ulink> und <ulink
+url="&url-arm-cyrius-mv2120;">HP mv2120</ulink>.
+
+</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>Versatile</term>
+<listitem><para>
+
+Die Versatile-Plattform wird von QEMU emuliert und ist deshalb eine nette
+Möglichkeit, &debian; auf MIPS zu testen und laufen zu lassen, falls echte
+Hardware nicht zur Verfügung steht.
+
+</para></listitem>
+</varlistentry>
+
+</variablelist>
+
+</para>
+  </sect2>

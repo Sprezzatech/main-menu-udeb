@@ -1,0 +1,141 @@
+<!-- retain these comments for translator revision tracking -->
+<!-- original version: 67982 -->
+
+  <sect2 arch="arm">
+  <!-- <title>CPU, Main Boards, and Video Support</title> -->
+  <title>CPU, schede madri e video supportate</title>
+<para>
+
+<!--
+Each distinct ARM architecture requires its own kernel. Because of
+this the standard &debian; distribution only supports installation on
+a number of the most common platforms. The &debian; userland however may be
+used by <emphasis>any</emphasis> ARM CPU.
+-->
+
+Ogni singola architettura ARM richiede un kernel specifico. Per questo
+motivo la distribuzione &debian; si installa solo sulle piattaforme più
+comuni. Invece tutti i pacchetti &debian; possono essere usati su
+<emphasis>qualsiasi</emphasis> CPU ARM.
+
+</para><para>
+
+<!--
+Most ARM CPUs may be run in either endian mode (big or little). However,
+the majority of current system implementation uses little-endian mode.
+&debian; currently only supports little-endian ARM systems.
+-->
+
+La maggior parte delle CPU ARM può funzionare sia in big endian che in
+little endian anche se la maggioranza dei sistemi usano la sola modalità
+little endian. Attualmente &debian; supporta solo i sistemi ARM little
+endian.
+
+</para><para>
+
+<!--
+The supported platforms are:
+-->
+
+Le piattaforme supportate sono:
+
+<variablelist>
+
+<varlistentry>
+<term>IOP32x</term>
+<listitem><para>
+
+<!--
+Intel's I/O Processor (IOP) line is found in a number of products related
+to data storage and processing.  &debian; currently supports the IOP32x
+platform, featuring the IOP 80219 and 32x chips commonly found in Network
+Attached Storage (NAS) devices.  &debian; explicitly supports two such
+devices: the <ulink url="&url-arm-cyrius-glantank;">GLAN Tank</ulink> from
+IO-Data and the <ulink url="&url-arm-cyrius-n2100;">Thecus N2100</ulink>.
+-->
+
+I processori di I/O (IOP) prodotti da Intel sono presenti in molti prodotti
+legati alla memorizzazione e all'elaborazione dei dati. Attualmente &debian;
+supporta la piattaforma IOP32xx, compresi i chip IOP 80219 e 32x molto
+comuni nei dispositivi NAS (Network Attached Storage). In particolare &debian;
+supporta due dispositivi di questo tipo:
+<ulink url="&url-arm-cyrius-glantank;">GLAN Tank</ulink> di IO-Data e
+<ulink url="&url-arm-cyrius-n2100;">Thecus N2100</ulink>.
+
+</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>Kirkwood</term>
+<listitem><para>
+
+<!--
+Kirkwood is a system on a chip (SoC) from Marvell that integrates an ARM
+CPU, Ethernet, SATA, USB, and other functionality in one chip.  We
+currently support the following Kirkwood based devices: OpenRD
+(OpenRD-Base, OpenRD-Client and OpenRD-Ultimate), <ulink
+url="&url-arm-cyrius-sheevaplug;">plug computers (SheevaPlug, GuruPlug and
+DreamPlug)</ulink>, <ulink url="&url-arm-cyrius-qnap-kirkwood;">QNAP
+Turbo Station</ulink> (all TS-11x, TS-21x and TS-41x models), and LaCie
+NASes (Network Space v2, Network Space Max v2, Internet Space v2, d2
+Network v2, 2Big Network v2 and 5Big Network v2).
+-->
+
+Kirkwood è un sistema su un chip (SoC) della Marvell che integra una
+CPU ARM, Ethernet, SATA, USB e altre funzionalità in un unico chip.
+Attualmente sono supportati i seguenti dispositivi basati su Kirkwood:
+OpenRD (OpenRD-Base, OpenRD-Client e OpenRD-Ultimate), <ulink
+url="&url-arm-cyrius-sheevaplug;">plug computer (SheevaPlug, GuruPluge
+e DreamPlug)</ulink>, <ulink url="&url-arm-cyrius-qnap-kirkwood;">QNAP
+Turbo Station</ulink> (tutti i modelli TS-11x, TS-21x, TS-41x) e i NAS
+LaCie (Network Space v2, Network Space Max v2, Internet Space v2, d2
+Network v2, 2Big Network v2 and 5Big Network v2).
+
+</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>Orion5x</term>
+<listitem><para>
+
+<!--
+Orion is a system on a chip (SoC) from Marvell that integrates an ARM CPU,
+Ethernet, SATA, USB, and other functionality in one chip. There are many
+Network Attached Storage (NAS) devices on the market that are based on an
+Orion chip. We currently support the following Orion based devices: <ulink
+url="&url-arm-cyrius-kuroboxpro;">Buffalo Kurobox</ulink>, <ulink
+url="&url-arm-cyrius-dns323;">D-Link DNS-323</ulink> and <ulink
+url="&url-arm-cyrius-mv2120;">HP mv2120</ulink>.
+-->
+
+Orion è un <emphasis>system on a chip</emphasis> (SoC) della Marvell che
+integra una CPU ARM, Ethernet, SATA, USB e altre funzionalità in un
+unico chip. Sul mercato ci sono molti dispositivi NAS (Network Attached
+Storage) basati sul chip Orion. Attualmente sono supportati questi
+dispositivi basati sul chip Orion:
+<ulink url="&url-arm-cyrius-kuroboxpro;">Buffalo Kurobox</ulink>,
+<ulink url="&url-arm-cyrius-dns323;">D-Link DNS-323</ulink> e
+<ulink url="&url-arm-cyrius-mv2120;">HP mv2120</ulink>.
+
+</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>Versatile</term>
+<listitem><para>
+
+<!--
+The Versatile platform is emulated by QEMU and is therefore a nice way to
+test and run &debian; on ARM if you don't have the hardware.
+-->
+
+La piattaforma Versatile è emulata da QEMU e quindi è un buon modo per
+fare delle prove e per usare &debian; su ARM se non si dispone dell'hardware.
+
+</para></listitem>
+</varlistentry>
+
+</variablelist>
+
+</para>
+  </sect2>

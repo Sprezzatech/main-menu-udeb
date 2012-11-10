@@ -1,0 +1,181 @@
+<!-- -*- DocBook -*- -->
+<!-- These entries should be language independent.  -->
+<!-- The *first* definition of an ENTITY wins.      -->
+
+<!-- short name to use for Debian -->
+<!ENTITY debian "Debian">
+
+<!-- proper (long) name to use for Debian -->
+<!ENTITY debian-gnu "&debian; GNU/&arch-kernel;">
+
+<!ENTITY d-i "<classname>debian-installer</classname>">
+
+<!ENTITY release     "7.0">
+<!ENTITY releasename "wheezy">
+<!ENTITY releasename-cap "Wheezy">
+<!ENTITY releasename-uc "WHEEZY">
+
+<!ENTITY FIXME
+  "<emphasis>Documentation not complete, text missing.</emphasis>">
+
+<!-- proper nouns for architectures -->
+<!ENTITY arch-title
+  "<phrase arch='any-amd64'>64-bit PC</phrase><phrase arch='arm'>ARM</phrase><phrase arch='hppa'>PA-RISC</phrase><phrase arch='any-i386'>32-bit PC</phrase><phrase arch='ia64'>IA-64</phrase><phrase arch='mips'>Mips</phrase><phrase arch='mipsel'>Mipsel</phrase><phrase arch='powerpc'>PowerPC</phrase><phrase arch='sparc'>SPARC</phrase><phrase arch='s390'>S/390</phrase>">
+
+<!-- general things from installer -->
+<!ENTITY enterkey "<keycap>Enter</keycap>">
+<!ENTITY escapekey "<keycap>Esc</keycap>">
+<!ENTITY tabkey "<keycap>Tab</keycap>">
+<!ENTITY MSG-YES "<userinput>Yes</userinput>">
+<!ENTITY MSG-NO "<userinput>No</userinput>">
+<!ENTITY BTN-CONT "<guibutton>Continue</guibutton>">
+<!ENTITY BTN-CANCEL "<guibutton>Cancel</guibutton>">
+<!ENTITY BTN-GOBACK "<guibutton>Go Back</guibutton>">
+
+<!-- notation used for 'megabytes' -->
+<!ENTITY notation-megabytes "MB">
+
+<!-- minimum hard disk size for base system -->
+<!-- As measured just before reboot (i.e. before the cleanup script drops
+.debs), plus some margin. This is also approximately the used size after
+cleanup, plus minimal ~150MB work space included. -->
+<!ENTITY minimum-fs-size "700&notation-megabytes;">
+
+<!--
+Size of install as used in appendix/files.xml; all values based on amd64.
+
+To determine the size of the base system and tasks, start with a default
+installation:
+- in English
+- with use of network mirror
+- without selecting _any_ tasks.
+After the reboot, the size for the minimal base system should be determined
+after running 'aptitude clean' using 'du -hsx /'. After that the "Standard
+system" task should be installed and the size of the standard system can be
+determined using the same method.
+
+Sizes of tasks should be determined by running tasksel with the "new-install"
+and "test" options on a system that been fully installed with only the
+standard task. By selecting a task, the corresponding apt-get line will be
+emitted. Copy/paste it without the -q -y options, apt-get will then show the
+sizes for the task. Cancel it, and repeat for other tasks. For instance:
+
+apt-get -o APT::Install-Recommends=true -o APT::Get::AutomaticRemove=true install task-desktop task-gnome-desktop
+
+To get the sizes for the alternative desktop environments you will need
+to first switch tasksel to that DE using the following command, e.g:
+   echo "tasksel tasksel/desktop string kde" | debconf-set-selections
+-->
+
+<!-- Size of the basic installation -->
+  <!ENTITY base-system-size   "510">
+  <!ENTITY std-system-size    "701">
+<!-- Desktop environment task
+     (obsolete; can be removed when all translations have been updated) -->
+  <!ENTITY task-desktop-inst "2519">
+  <!ENTITY task-desktop-dl    "923">
+  <!ENTITY task-desktop-tot  "3473">
+<!-- Desktop environment task - GNOME -->
+  <!ENTITY task-desktop-gnome-inst "2519">
+  <!ENTITY task-desktop-gnome-dl    "923">
+  <!ENTITY task-desktop-gnome-tot  "3473">
+<!-- Desktop environment task - KDE -->
+  <!ENTITY task-desktop-kde-inst   "2342">
+  <!ENTITY task-desktop-kde-dl      "927">
+  <!ENTITY task-desktop-kde-tot    "3269">
+<!-- Desktop environment task - Xfce -->
+  <!ENTITY task-desktop-xfce-inst  "1754">
+  <!ENTITY task-desktop-xfce-dl     "622">
+  <!ENTITY task-desktop-xfce-tot   "2376">
+<!-- Desktop environment task - LXDE -->
+  <!ENTITY task-desktop-lxde-inst  "1694">
+  <!ENTITY task-desktop-lxde-dl     "605">
+  <!ENTITY task-desktop-lxde-tot   "2299">
+<!-- Web server task -->
+  <!ENTITY task-web-inst       "23">
+  <!ENTITY task-web-dl         "5">
+  <!ENTITY task-web-tot        "28">
+<!-- Print server task -->
+  <!ENTITY task-print-inst    "224">
+  <!ENTITY task-print-dl       "73">
+  <!ENTITY task-print-tot     "297">
+<!-- DNS server task -->
+  <!ENTITY task-dns-inst        "3">
+  <!ENTITY task-dns-dl          "1">
+  <!ENTITY task-dns-tot         "4">
+<!-- File server task -->
+  <!ENTITY task-file-inst     "126">
+  <!ENTITY task-file-dl        "26">
+  <!ENTITY task-file-tot      "152">
+<!-- Mail server task -->
+  <!ENTITY task-mail-inst      "77">
+  <!ENTITY task-mail-dl        "30">
+  <!ENTITY task-mail-tot      "107">
+<!-- SQL database task -->
+  <!ENTITY task-sql-inst       "40">
+  <!ENTITY task-sql-dl         "14">
+  <!ENTITY task-sql-tot        "54">
+<!-- SSH server task -->
+  <!ENTITY task-ssh-inst        "1">
+  <!ENTITY task-ssh-dl          "0">
+  <!ENTITY task-ssh-tot         "1">
+<!-- Laptop task -->
+  <!ENTITY task-laptop-inst   "305">
+  <!ENTITY task-laptop-dl      "97">
+  <!ENTITY task-laptop-tot    "402">
+
+
+<!-- number of packages, approx, in the main distribution -->
+<!-- use:
+     for i in binary-*; do echo -n "$i: "; zgrep '^Package:' binary-all/Packages.gz $i/Packages.gz | wc -l; done
+-->
+<!-- last updated: August 27 2012 for Wheezy (sthibault) -->
+<!ENTITY num-of-distrib-pkgs
+  "<phrase arch='amd64'>52941</phrase>
+   <phrase arch='armel'>52168</phrase>
+   <phrase arch='armhf'>52076</phrase>
+   <phrase arch='i386'>53051</phrase>
+   <phrase arch='ia64'>51187</phrase>
+   <phrase arch='kfreebsd-amd64'>50320</phrase>
+   <phrase arch='kfreebsd-i386'>50283</phrase>
+   <phrase arch='mips'>52046</phrase>
+   <phrase arch='mipsel'>52076</phrase>
+   <phrase arch='powerpc'>52340</phrase>
+   <phrase arch='s390'>51833</phrase>
+   <phrase arch='s390'>51653</phrase>
+   <phrase arch='sparc'>52207</phrase>
+   ">
+
+<!-- Number of current Debian developers -->
+<!-- Can be found for example on vote.debian.org (use last vote) -->
+<!ENTITY num-of-debian-developers "951">
+
+<!-- Number of current Debian maillists (see
+     http://lists.debian.org/completeindex.html) -->
+<!ENTITY num-of-debian-maillists "253">
+
+<!-- version of X11 shipping with the current release -->
+<!ENTITY x11ver "7.7">
+
+<!-- version of BRLTTY shipping with the current release -->
+<!ENTITY brlttyver "4.4">
+
+<!-- version of Speakup shipping with the current release -->
+<!ENTITY speakupver "3.1.6">
+
+<!-- an example of adding another image to lilo.conf, cf
+     en/post-install.sgml etc. -->
+<!ENTITY additional-lilo-image
+'image=/boot/vmlinuz.new
+  label=new
+  append="mcd=0x320,11"
+  read-only'>
+
+<!-- CD directory containing the kernel binary and ramdisk image,
+     according to the architecture.  -->
+<!ENTITY x86-install-dir
+   "install.<filename arch='i386'>386</filename><filename arch='amd64'>amd</filename>">
+
+<!-- prefix for files that can be downloaded -->
+<!-- <![ %official-web-build; [ <!ENTITY downloadable-file "&url-boot-floppies;"> ]]> -->
+                          <!ENTITY downloadable-file "&url-debian-installer;">

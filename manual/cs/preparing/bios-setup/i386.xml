@@ -1,0 +1,57 @@
+<!-- $Id$ -->
+<!-- original version: 68016 -->
+
+  <sect2 arch="any-x86" id="bios-setup">
+  <title>Vyvolání menu systému BIOS</title>
+
+<para>
+
+BIOS zabezpečuje základní funkce nutné pro zavedení operačního
+systému. Váš počítač patrně umožňuje vyvolání menu, ze kterého lze
+BIOS nastavit. Vstup do BIOSu se liší od výrobce k výrobci, ale často
+to bývá klávesou <keycap>Delete</keycap> nebo <keycap>F2</keycap> po
+zapnutí počítače.
+
+</para>
+  </sect2>
+
+  <sect2 arch="any-x86" id="boot-dev-select">
+  <title>Výběr zaváděcího zařízení</title>
+
+<para>
+
+V systémech BIOS si obvykle můžete vybrat pořadí médií, na kterých se
+bude hledat zaveditelný operační systém. V seznamu obvykle naleznete
+interní pevné disky, CD/DVD mechaniky a bloková USB zařízení jako USB
+klíčenky nebo externí USB disky. Často také nechybí zavádění ze sítě
+pomocí PXE.
+
+</para><para>
+
+Dle zvolené instalační metody nastavte pořadí zařízení tak, aby se
+jako první spustil instalační systém.
+
+</para><para>
+
+Často můžete použít zkratku a příslušné zaváděcí zařízení vybrat hned
+po zapnutí počítače bez vstupování do BIOSu. Výhodou je, že na rozdíl
+od nastavení v BIOSu, platí tato změna pouze pro tento jeden start
+počítače. Nevýhoda je pak ta, že se klávesa pro vyvolání této nabídky
+liší mezi systémy ještě více, než samotný vstup do BIOSu. Správnou
+klávesu vám prozradí návod k základní desce, obvykle to bývá klávesa
+<keycap>F12</keycap>, <keycap>F11</keycap> nebo <keycap>F8</keycap>.
+
+</para><para>
+
+Některé počítače mají bohužel chybové verze BIOSu a zavedení
+instalačního systému z USB klíčenky nemusí fungovat, i když jste vše
+nastavili správně. Někdy se dají počítače ošálit tím, že v BIOSu místo
+<quote>USB harddisk</quote> nebo <quote>USB stick</quote> vyberete typ
+zařízení <quote>USB ZIP</quote> nebo <quote>USB CDROM</quote>.
+<phrase condition="isohybrid-supported">
+Změna na <quote>USB CDROM</quote> pomáhá obzvláště v případech, kdy na
+USB klíčence používáte CD/DVD obraz typu isohybrid (viz <xref
+linkend="usb-copy-isohybrid"/>).</phrase>
+
+</para>
+  </sect2>

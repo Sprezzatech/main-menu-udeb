@@ -1,0 +1,86 @@
+<!-- $Id$ -->
+<!-- original version: 67982 -->
+
+   <sect3 arch="arm" id="n2100-install-files">
+   <title>Instalační soubory pro Thecus N2100</title>
+<para>
+
+Pro Thecus N2100 existuje obraz firmware, který automaticky zavede
+<classname>debian-installer</classname>. Tento obraz je k dispozici
+ke stažení na &n2100-firmware-img;. Do zařízení můžete obraz nahrát
+standardním způsobem pro aktualizaci firmware.
+
+</para>
+   </sect3>
+
+   <sect3 arch="arm" id="glantank-install-files">
+   <title>Instalační soubory pro GLAN Tank</title>
+<para>
+
+GLAN Tank vyžaduje jádro a ramdisk na oblasti formátované souborovým
+systémem ext2. Oblast se musí nacházet na disku, na který chcete
+&debian; nainstalovat. Tyto obrazy jsou k dispozici ke stažení na
+&glantank-firmware-img;.
+
+</para>
+   </sect3>
+
+   <sect3 arch="arm" id="kuroboxpro-install-files">
+   <title>Instalační soubory pro Kurobox Pro</title>
+<para>
+
+Kurobox Pro vyžaduje jádro a ramdisk na oblasti formátované souborovým
+systémem ext2. Oblast se musí nacházet na disku, na který chcete
+&debian; nainstalovat. Tyto obrazy jsou k dispozici ke stažení na
+&kuroboxpro-firmware-img;.
+
+</para>
+   </sect3>
+
+   <sect3 arch="arm" id="mv2120-install-files">
+   <title>Instalační soubory pro HP mv2120</title>
+<para>
+
+Pro HP mv2120 existuje obraz firmware, který automaticky zavede
+<classname>debian-installer</classname>. Tento obraz je k dispozici
+ke stažení na &mv2120-firmware-img;. Do zařízení můžete obraz nahrát
+nástrojem <command>uphpmvault</command> ze stejnojmenného balíku,
+případně z Windows pomocí HP Media Vault Firmware Recovery Utility.
+
+</para>
+   </sect3>
+
+   <sect3 arch="arm" id="qnap-install-files">
+   <title>Instalační soubory pro QNAP Turbo Station</title>
+<para>
+
+Instalační soubory pro QNAP Turbo Station se skládají z jádra,
+ramdisku a skriptu, který tyto soubory zapíše do flash paměti
+zařízení. Příslušné instalační soubory pro QNAP TS-11x, TS-21x
+a TS-41x můžete stáhnout z &qnap-kirkwood-firmware-img;.
+
+</para>
+   </sect3>
+
+   <sect3 arch="arm" id="marvell-install-files">
+   <title>Instalační soubory pro zásuvkové počítače a OpenRD</title>
+<para>
+
+Instalační soubory pro zásuvkové počítače (SheevaPlug, GuruPlug,
+DreamPlug apod.) a zařízení OpenRD se skládají z jádra a initrd pro
+U-Boot. Oba soubory můžete stáhnout z &kirkwood-marvell-firmware-img;.
+
+ </para>
+    </sect3>
+
+   <sect3 arch="arm" id="lacie-install-files">
+   <title>Instalační soubory pro NASy LaCie</title>
+<para>
+
+Instalační soubory pro NASy LaCie (Network Space v2, Network Space Max
+v2, Internet Space v2, d2 Network v2, 2Big Network v2 a 5Big Network
+v2) se skládají z jádra a initrd pro U-Boot. Oba soubory můžete
+stáhnout z &lacie-kirkwood-firmware-img;.
+
+</para>
+   </sect3>

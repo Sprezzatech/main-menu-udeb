@@ -1,0 +1,493 @@
+<!-- retain these comments for translator revision tracking -->
+<!-- $Id$ -->
+
+ <sect1 id="needed-info">
+ <title>Information You Will Need</title>
+
+  <sect2>
+  <title>Documentation</title>
+
+   <sect3>
+   <title>Installation Manual</title>
+
+<para condition="for_cd">
+
+This document you are now reading, in plain ASCII, HTML or PDF format.
+
+</para>
+
+<itemizedlist condition="for_cd">
+
+&list-install-manual-files;
+
+</itemizedlist>
+
+<para condition="for_wdo">
+
+The document you are now reading, which is the official version of the
+Installation Guide for the &releasename; release of &debian;; available
+in <ulink url="&url-release-area;/installmanual">various formats and
+translations</ulink>.
+
+</para>
+
+<para condition="for_alioth">
+
+The document you are now reading, which is a development version of the
+Installation Guide for the next release of &debian;; available in
+<ulink url="&url-d-i-alioth-manual;">various formats and
+translations</ulink>.
+
+</para>
+
+</sect3>
+
+
+   <sect3><title>Hardware documentation</title>
+<para>
+
+Often contains useful information on configuring or using your hardware.
+
+</para>
+
+ <!-- We need the arch dependence for the whole list to ensure proper xml
+      as long as not architectures have a paragraph -->
+ <itemizedlist arch="x86;sparc;mips;mipsel">
+<listitem arch="x86"><para>
+
+<ulink url="&url-debian-wiki-hardware;">The Debian Wiki hardware page</ulink>
+
+</para></listitem>
+
+<listitem arch="sparc"><para>
+
+<ulink url="&url-sparc-linux-faq;">Linux for SPARC Processors FAQ</ulink>
+
+</para></listitem>
+
+<listitem arch="mips;mipsel"><para>
+
+<ulink url="&url-linux-mips;">Linux/Mips website</ulink>
+
+</para></listitem>
+
+</itemizedlist>
+   </sect3>
+
+
+   <sect3 arch="s390">
+   <title>&arch-title; Hardware References</title>
+<para>
+
+
+Documentation of &arch-title;-specific boot sequence, commands and device
+drivers (e.g. DASD, XPRAM, Console, OSA, HiperSockets and z/VM interaction)
+
+</para>
+
+<itemizedlist>
+<listitem><para>
+
+<ulink url="http://public.dhe.ibm.com/software/dw/linux390/docu/lk32dd04.pdf">Device Drivers, Features, and Commands (Linux Kernel 2.6.32)</ulink>
+
+</para></listitem>
+</itemizedlist>
+
+<para>
+
+IBM Redbook describing how Linux can be combined with z/VM on
+zSeries and &arch-title; hardware.
+
+</para>
+
+<itemizedlist>
+<listitem><para>
+
+<ulink url="http://www.redbooks.ibm.com/pubs/pdfs/redbooks/sg244987.pdf">
+Linux for &arch-title;</ulink>
+
+</para></listitem>
+</itemizedlist>
+
+<para>
+
+IBM Redbook describing the Linux distributions available for the
+mainframe. It has no chapter about &debian; but the basic installation
+concepts are the same across all &arch-title; distributions.
+
+</para>
+
+<itemizedlist>
+<listitem><para>
+
+<ulink url="http://www.redbooks.ibm.com/pubs/pdfs/redbooks/sg246264.pdf">
+Linux for IBM eServer zSeries and &arch-title;: Distributions</ulink>
+
+</para></listitem>
+</itemizedlist>
+   </sect3>
+
+  </sect2>
+
+  <sect2 id="fsohi">
+  <title>Finding Sources of Hardware Information</title>
+<para>
+
+In many cases, the installer will be able to automatically detect your
+hardware. But to be prepared, we do recommend familiarizing
+yourself with your hardware before the install.
+
+</para><para>
+
+Hardware information can be gathered from:
+
+</para>
+
+<itemizedlist>
+<listitem><para>
+
+The manuals that come with each piece of hardware.
+
+</para></listitem>
+<listitem><para>
+
+The BIOS setup screens of your computer. You can view these screens
+when you start your computer by pressing a combination of keys. Check
+your manual for the combination. Often, it is the <keycap>Delete</keycap> 
+or the <keycap>F2</keycap> key, but some manufacturers use other keys
+or key combinations. Usually upon starting the computer there will
+be a message stating which key to press to enter the setup screen.
+
+</para></listitem>
+<listitem><para>
+
+The cases and boxes for each piece of hardware.
+
+</para></listitem>
+
+<listitem arch="any-x86"><para>
+
+The System window in the Windows Control Panel.
+
+
+</para></listitem>
+<listitem><para>
+
+System commands or tools in another operating system, including file
+manager displays. This source is especially useful for information
+about RAM and hard drive memory.
+
+</para></listitem>
+<listitem><para>
+
+Your system administrator or Internet Service Provider. These
+sources can tell you the settings you need to set up your
+networking and e-mail.
+
+</para></listitem>
+</itemizedlist>
+
+<para>
+
+<table>
+<title>Hardware Information Helpful for an Install</title>
+<tgroup cols="2">
+<thead>
+<row>
+  <entry>Hardware</entry><entry>Information You Might Need</entry>
+</row>
+</thead>
+
+<tbody>
+<row arch="not-s390">
+  <entry morerows="5">Hard Drives</entry>
+  <entry>How many you have.</entry>
+</row>
+<row arch="not-s390"><entry>Their order on the system.</entry></row>
+<row arch="not-s390">
+  <entry>Whether IDE (also known as PATA), SATA or SCSI.</entry>
+</row>
+<row arch="not-s390"><entry>Available free space.</entry></row>
+<row arch="not-s390"><entry>Partitions.</entry></row>
+<row arch="not-s390">
+  <entry>Partitions where other operating systems are installed.</entry>
+</row>
+
+<!-- 
+<row arch="not-s390">
+  <entry morerows="5">Monitor</entry>
+  <entry>Model and manufacturer.</entry>
+</row>
+<row arch="not-s390"><entry>Resolutions supported.</entry></row>
+<row arch="not-s390"><entry>Horizontal refresh rate.</entry></row>
+<row arch="not-s390"><entry>Vertical refresh rate.</entry></row>
+<row arch="not-s390">
+  <entry>Color depth (number of colors) supported.</entry>
+</row>
+<row arch="not-s390"><entry>Screen size.</entry></row>
+-->
+
+<!--
+<row arch="not-s390">
+  <entry morerows="3">Mouse</entry>
+  <entry>Type: serial, PS/2, or USB.</entry>
+</row>
+<row arch="not-s390"><entry>Port.</entry></row>
+<row arch="not-s390"><entry>Manufacturer.</entry></row>
+<row arch="not-s390"><entry>Number of buttons.</entry></row>
+-->
+
+<row arch="not-s390">
+  <entry morerows="0">Network interfaces</entry>
+  <entry>Type/model of available network interfaces.</entry>
+</row>
+
+<row arch="not-s390">
+  <entry morerows="0">Printer</entry>
+  <entry>Model and manufacturer.</entry>
+</row>
+
+<row arch="not-s390">
+  <entry morerows="0">Video Card</entry>
+  <entry>Type/model and manufacturer.</entry>
+</row>
+
+<row arch="s390">
+  <entry morerows="1">DASD</entry>
+  <entry>Device number(s).</entry>
+</row>
+<row arch="s390"><entry>Available free space.</entry></row>
+
+<row arch="s390">
+  <entry morerows="2">Network</entry>
+  <entry>Type of adapter.</entry>
+</row>
+<row arch="s390"><entry>Device numbers.</entry></row>
+<row arch="s390"><entry>Relative adapter number for OSA cards.</entry></row>
+
+</tbody></tgroup></table>
+
+</para>
+  </sect2>
+
+  <sect2>
+  <title>Hardware Compatibility</title>
+
+<para>
+
+Many products work without trouble on &arch-kernel;. Moreover,
+hardware support in &arch-kernel; is improving daily. However, &arch-kernel; still does
+not run as many different types of hardware as some operating systems.
+
+</para><para>
+
+Drivers in &arch-kernel; in most cases are not written for a certain
+<quote>product</quote> or <quote>brand</quote> from a specific manufacturer, but for a certain
+hardware/chipset. Many seemingly
+different products/brands are based on the same hardware design; it is not
+uncommon that chip manufacturers provide so-called <quote>reference designs</quote> for
+products based on their chips which are then used by several different
+device manufacturers and sold under lots of different product or brand
+names.
+
+</para><para>
+
+This has advantages and disadvantages. An advantage is that a driver for one
+chipset works with lots of different products from different manufacturers,
+as long as their product is based on the same chipset.  The disadvantage is
+that it is not always easy to see which actual chipset is used in a certain
+product/brand.  Unfortunately sometimes device manufacturers change the
+hardware base of their product without changing the product name or at least
+the product version number, so that when having two items of the same
+brand/product name bought at different times, they can sometimes be based on
+two different chipsets and therefore use two different drivers or there
+might be no driver at all for one of them.
+
+</para><para>
+
+For USB and PCI/PCI-Express/ExpressCard devices, a good way to find out on
+which chipset they are based is to look at their device IDs.  All
+USB/PCI/PCI-Express/ExpressCard devices have so called <quote>vendor</quote> and
+<quote>product</quote> IDs, and the combination of these two is usually the same for any
+product based on the same chipset.
+
+</para><para>
+
+On Linux systems, these IDs can be read with the <command>lsusb</command>
+command for USB devices and with the <command>lspci -nn</command> command for
+PCI/PCI-Express/ExpressCard devices.  The vendor and product IDs are usually
+given in the form of two hexadecimal numbers, seperated by a colon, such as
+<quote>1d6b:0001</quote>.
+
+</para><para>
+
+An example for the output of <command>lsusb</command>: <quote>Bus 001
+Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</quote>, whereby 1d6b is
+the vendor ID and 0002 is the product ID.
+
+</para><para>
+
+An example for the output of <command>lspci -nn</command> for an Ethernet
+card: <quote>03:00.0 Ethernet controller [0200]: Realtek Semiconductor Co., Ltd. 
+RTL8111/8168B PCI Express Gigabit Ethernet controller [10ec:8168] (rev 06)</quote>. 
+The IDs are given inside the rightmost square brackets, i.e. here
+10ec is the vendor- and 8168 is the product ID.
+
+</para><para>
+
+As another example, a graphics card could give the following output:
+<quote>04:00.0 VGA compatible controller [0300]: Advanced Micro Devices [AMD] nee
+ATI RV710 [Radeon HD 4350] [1002:954f]</quote>.
+
+</para><para>
+
+On Windows systems, the IDs for a device can be found in the Windows device
+manager on the tab <quote>details</quote>, where the vendor ID is prefixed with VEN_
+and the product ID is prefixed with DEV_.
+
+On Windows 7 systems, you have to select the property <quote>Hardware IDs</quote> in the
+device manager's details tab to actually see the IDs, as they are not
+displayed by default.
+
+</para><para>
+
+Searching on the internet with the vendor/product ID, <quote>&arch-kernel;</quote> and
+<quote>driver</quote> as the search terms often results in information regarding
+the driver support status for a certain chipset. If a search for the
+vendor/product ID does not yield usable results, a search for the chip
+code names, which are also often provided by lsusb and lspci
+(<quote>RTL8111</quote>/<quote>RTL8168B</quote> in the network card example and <quote>RV710</quote> in the
+graphics card example), can help.
+
+</para>
+
+    <sect3>
+      <title>Testing hardware compatibility with a Live-System</title>
+
+<para>
+
+&debian-gnu; is also available as a so-called <quote>live system</quote> for certain
+architectures.  A live system is a preconfigured ready-to-use system
+in a compressed format that can be booted and used from a read-only medium
+like a CD or DVD.  Using it by default does not create any permanent changes
+on your computer.  You can change user settings and install additional
+programs from within the live system, but all this only happens in the
+computer's RAM, i.e.  if you turn off the computer and boot the live system
+again, everything is reset to its defaults.  If you want to see whether
+your hardware is supported by &debian-gnu;, the easiest way is to run a
+&debian; live system on it and try it out.
+
+</para><para>
+
+There are a few limitations in using a live system. The first is that as
+all changes you do within the live system must be held in your computer's
+RAM, this only works on systems with enough RAM to do that, so installing
+additional large software packages may fail due to memory constraints. 
+Another limitation with regards to hardware compatibility testing is
+that the official &debian-gnu; live system contains only free components,
+i.e. there are no non-free firmware files included in it. Such non-free
+packages can of course be installed manually within the system, but there
+is no automatic detection of required firmware files like in the &d-i;,
+so installation of non-free components must be done manually if needed.
+
+</para><para>
+
+Information about the available variants of the  &debian; live images
+can be found at the <ulink url="&url-debian-live-cd;">Debian Live Images website</ulink>.
+
+</para>
+
+  
+    </sect3>
+
+
+  </sect2>
+
+  <sect2>
+  <title>Network Settings</title>
+
+<para>
+
+If your computer is connected to a fixed network (i.e. an Ethernet or
+equivalent connection &mdash; not a dialup/PPP connection) which is
+administered by somebody else, you should ask your network's system
+administrator for this information:
+
+<itemizedlist>
+<listitem><para>
+
+Your host name (you may be able to decide this on your own).
+
+</para></listitem>
+<listitem><para>
+
+Your domain name.
+
+</para></listitem>
+<listitem><para>
+
+Your computer's IP address.
+
+</para></listitem>
+<listitem><para>
+
+The netmask to use with your network.
+
+</para></listitem>
+<listitem><para>
+
+The IP address of the default gateway system you should route to, if
+your network <emphasis>has</emphasis> a gateway.
+
+</para></listitem>
+<listitem><para>
+
+The system on your network that you should use as a DNS (Domain Name
+Service) server.
+
+</para></listitem>
+</itemizedlist>
+
+</para><para>
+
+If the network you are connected to uses DHCP (Dynamic Host Configuration
+Protocol) for configuring network settings, you don't need this information
+because the DHCP server will provide it directly to your computer
+during the installation process.
+
+</para><para>
+
+If you have internet access via DSL or cable modem (i.e. over a cable tv
+network) and have a router (often provided preconfigured by your phone or
+catv provider) which handles your network connectivity, DHCP is usually
+available by default.
+
+
+</para><para arch="x86">
+
+As a rule of thumb: if you run a Windows system in your home network and did
+not have to manually perform any network settings there to achieve Internet
+access, network connectivity in  &debian-gnu; will also be configured
+automatically.
+
+</para><para arch="not-s390">
+
+If you use a WLAN/WiFi network, you should find out:
+
+<itemizedlist>
+<listitem><para>
+
+The ESSID (<quote>network name</quote>) of your wireless network.
+
+</para></listitem>
+<listitem><para>
+
+The WEP or WPA/WPA2 security key to access the network (if applicable).
+
+</para></listitem>
+</itemizedlist>
+
+</para>
+  </sect2>
+
+ </sect1>
