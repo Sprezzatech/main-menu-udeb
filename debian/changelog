@@ -1,3 +1,15 @@
+main-menu (1.39) unstable; urgency=low
+
+  [ Updated translations ]
+  * Catalan (ca.po) by Jordi Mallach
+  * Hungarian (hu.po) by Dr. Nagy Elemér Károly
+
+  [ Christian Perrier ]
+  * Add myself to Uploaders
+  * Use Package-Type in debian/control
+
+ -- Christian Perrier <bubulle@debian.org>  Tue, 11 Dec 2012 06:52:52 +0100
+
 main-menu (1.38) unstable; urgency=low
 
   * Team upload
