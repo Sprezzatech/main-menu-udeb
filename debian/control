@@ -11,4 +11,4 @@ Package: main-menu
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Debian installer main menu
-XC-Package-Type: udeb
+Package-Type: udeb
